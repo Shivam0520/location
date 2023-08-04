@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Location Selection Menu</title>
+ <style>
+#detectLocationText {
+    left: 25px;
+  width: 139px;
+  
+  position: absolute;
+  top: calc(23.5% - 12.5px);
+  left: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 139px;
+  height: 25px;
+
+    }
+.gps-button{
+    position: absolute;
+  top: 10px;
+  left: 148px;
+  border-radius: 8px;
+  background-color: rgba(255, 61, 27, 0.45);
+  width: 125px;
+  height: 25px;
+}
+.gps-button{
+color: rgb(101, 13, 13);
+}
+.location {
+  top: 95px;
+  left: 68px;
+  height: auto;
+  position: absolute;
+  width: 281px;
+}
+.location-name-text {
+  position: absolute;
+  top: calc(50% - 10.5px);
+  left: 55px;
+  font-weight: 500;
+}
+.location-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+
+  box-shadow: 0 4px 4px rgba(242, 161, 161, 0.417),
+    2px -4px 4px rgba(193, 73, 73, 0.25) inset,
+    -2px 4px 4px rgba(193, 73, 73, 0.25) inset;
+
+  border: 1px solid rgba(246, 9, 9, 0.1);
+  box-sizing: border-box;
+  width: 281px;
+  height: 67px;
+  overflow: hidden;
+}
+.chevron-down-icon,
+.map-pin-icon {
+  position: absolute;
+  top: calc(50% - 17.5px);
+  left: 235px;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+}
+.map-pin-icon {
+  top: calc(50% - 14.5px);
+  left: 18px;
+  width: 25px;
+  height: 28px;
+}
+.search-icon
+{
+  position: absolute;
+  overflow: hidden;
+  top: calc(68% - 7px);
+  left: 23px;
+  width: 20px;
+  height: 22px;
+}
+.location-box {
+  position: absolute;
+  width: 281px;
+}
+.location-box {
+  top: 80px;
+  left: calc(50% - 140.5px);
+  border-radius: 10px;
+
+  box-shadow: 0 4px 4px rgba(242, 161, 161, 0.417),
+    2px -4px 4px rgba(193, 73, 73, 0.25) inset,
+    -2px 4px 4px rgba(193, 73, 73, 0.25) inset;
+
+
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  height: 98px; /* Default height of the box */
+  font-size: 13px;
+}
+
+.lo
+    /* Styling for the search bar */
+.search-container {
+      display: none;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+.search-input {
+  position: absolute;
+  top: 52px;
+  left: 11px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    2px -4px 4px rgba(0, 0, 0, 0.25) inset,
+    -2px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 259px;
+  height: 34px;
+  text-align:center;
+  overflow: hidden;
+  
+    }
+
+    /* Styling for the custom location selection menu */
+.location-menu {
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 100px;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+  position: absolute;
+  width: 253px;
+  height: auto;
+  top: 0;
+  left: 0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  top: 100px;
+  left: calc(50% - 126.5px);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+.location-menu-item {
+      cursor: pointer;
+      padding: 10px;
+
+      border-radius: 1px;
+      box-shadow: 0 4px 4px rgba(242, 161, 161, 0.417),
+    2px -4px 4px rgba(193, 73, 73, 0.25) inset,
+    -2px 4px 4px rgba(193, 73, 73, 0.25) inset;
+
+
+      transition: background-color 0.3s ease;
+    }
+
+.location-menu-item:hover {
+      background-color:#d35050cd;
+    }
+
+    /* Styling for the selected location display */
+.selected-location {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      cursor: pointer;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+/* Additional styles for the typewriter effect */
+    .typewriter {
+      display: inline-block;
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #fffcfc;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #fdc0c0;
+      border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e35858;
+    }
+  </style>
+</head>
+<body style="background-color: #ebc8c8;">
+  <div class="location" id="selectedLocation">
+    <div class="location-name" id="selectedLocationDisplay">
+      <img class="chevron-down-icon" alt="" src="chevrondown.svg" />
+      <img class="map-pin-icon" alt="" src="mappin.svg" />
+      <span class="location-name-text" id="selectedLocationText">Choose Location</span>
+    </div>
+
+    <div class="location-box" id="locationBox" style="display: none;">
+      <div class="gps-container">
+        <div class="detectLocationText" id="detectLocationText">
+<span class="typewriter" id="selectedLocationText" onclick="showLocationBox()">Current Location</span>
+
+        </div>
+        <button class="gps-button" id="gpsButton">
+          <span class="gps-button1">Detect Using GPS</span>
+        </button>
+      </div>
+
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search locations..." />
+        <img class="search-icon" alt="" src="search.svg" />
+        <ul class="location-menu" id="locationMenu">
+          <!-- Menu list items will be dynamically generated here -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet" />
+  <script>
+    const selectedLocationDisplay = document.querySelector("#selectedLocationDisplay");
+    const locationBox = document.querySelector("#locationBox");
+    const selectedLocationText = document.querySelector("#selectedLocationText");
+    const gpsButton = document.querySelector("#gpsButton");
+    const searchInput = document.querySelector(".search-input");
+    const locationMenu = document.querySelector("#locationMenu");
+
+    const localities = [
+  "Vijay Nagar",
+  "Agrawal Nagar",
+  "Annapurna Nagar",
+  "Anoop Nagar",
+  "Anurag Nagar",
+  "Ashish Nagar",
+  "Balaji Vihar",
+  "Bangali Chouraha",
+  "Bengali Square",
+  "Bhawarkuan",
+  "Bhicholi Mardana",
+  "Bhuri Tekri",
+  "Bicholi Hapsi",
+  "Bombay Hospital Service Road",
+  "Chhavni",
+  "Chameli Devi Nagar",
+  "Chhawni",
+  "Chhoti Gwaltoli",
+  "Geeta Bhawan",
+  "Goyal Nagar",
+  "Jawahar Marg",
+  "Kalani Nagar",
+  "Kalindi Kunj",
+  "Kanadia Main Road",
+  "Kanadia Road",
+  "Khatiwala Tank",
+  "Khajrana",
+  "Khajrana Main Road",
+  "Krishna Pura",
+  "Lig Colony",
+  "Limbodi",
+  "Lokmanya Nagar",
+  "LIG Square",
+  "M.G. Road (MG Road)",
+  "Mahalaxmi Nagar",
+  "Mahalaxmi Nagar Colony",
+  "Mahesh Nagar",
+  "Manikbagh",
+  "Manishpuri",
+  "Manorama Ganj",
+  "Musakhedi",
+  "Nanda Nagar",
+  "Navlakha",
+  "Nehru Nagar",
+  "New Rani Bagh",
+  "Nipania",
+  "Niranjanpur",
+  "Old Palasia",
+  "Pardesipura",
+  "Patnipura",
+  "Pipliya Kumar",
+  "Pipaliyahana",
+  "Pipliyapala Regional Park Road",
+  "RNT Marg",
+  "Raj Mohalla",
+  "Rajendra Nagar",
+  "Rajwada",
+  "Rau",
+  "Rau Pithampur Road",
+  "Sarafa Bazaar",
+  "Sapna Sangeeta",
+  "Scheme No. 54",
+  "Scheme No. 71",
+  "Scheme No. 74-C",
+  "Scheme No. 78",
+  "Scheme No. 94",
+  "Scheme No. 114",
+  "Scheme No. 114 Part I",
+  "Scheme No. 114 Part II",
+  "Shalimar Township",
+  "Shree Nagar Extension",
+  "Shri Nagar",
+  "Silicon City",
+  "Snehlata Ganj",
+  "Sudama Nagar",
+  "Sukhlia",
+  "Sukhdev Nagar",
+  "Sukhliya",
+  "Sukhlia-Simar",
+  "Sudarshan Nagar",
+  "Telephone Nagar",
+  "Tilak Nagar",
+  "Vaibhav Nagar",
+  "Vaishali Nagar",
+];
+
+    function showLocationBox() {
+      locationBox.style.display = "block";
+      searchInput.value = ""; // Clear search input when the location box opens
+      searchInput.focus();
+    }
+
+    function hideLocationBox() {
+      locationBox.style.display = "none";
+    }
+
+    function updateSelectedLocation(locationName) {
+      selectedLocationText.textContent = locationName;
+    }
+
+    selectedLocationDisplay.addEventListener("click", function () {
+      showLocationBox();
+    });
+
+    gpsButton.addEventListener("click", function () {
+      if (locationBox.style.display === "none") {
+        hideLocationBox();
+        return;
+      }
+
+      gpsButton.disabled = true;
+      detectLocationText();
+    });
+
+    function detectLocationText() {
+      const textToType = "Detecting Location...";
+      let index = 0;
+      selectedLocationText.textContent = ""; // Clear the text before starting the typewriter effect
+
+      function typeWriter() {
+        if (index < textToType.length) {
+          selectedLocationText.textContent += textToType.charAt(index);
+          index++;
+          setTimeout(typeWriter, 100);
+        } else {
+          index = 0;
+          getCurrentPosition();
+        }
+      }
+
+      typeWriter();
+    }
+
+    function getCurrentPosition() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            getMapboxLocation(latitude, longitude);
+          },
+          function (error) {
+            enableGpsButton();
+            alert("Error getting your location. Please try again later.");
+            console.error(error);
+          }
+        );
+      } else {
+        enableGpsButton();
+        alert("Geolocation is not supported by your browser.");
+      }
+    }
+
+    function enableGpsButton() {
+      gpsButton.disabled = false;
+    }
+
+// new one 
+    function showLocationBox() {
+      locationBox.style.display = "block";
+      searchInput.value = ""; // Clear search input when the location box opens
+      searchInput.focus();
+    }
+
+    function hideLocationBox() {
+      locationBox.style.display = "none";
+    }
+
+    function updateSelectedLocation(locationName) {
+      selectedLocationText.textContent = locationName;
+    }
+
+    function detectLocation() {
+      if (navigator.geolocation) {
+        gpsButton.disabled = true;
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            getMapboxLocation(latitude, longitude);
+          },
+          function (error) {
+            enableGpsButton();
+            alert("Error getting your location. Please try again later.");
+            console.error(error);
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by your browser.");
+      }
+    }
+
+    function enableGpsButton() {
+      gpsButton.disabled = false;
+    }
+// ne wnkksj
+
+    function getMapboxLocation(latitude, longitude) {
+      const mapboxAccessToken = "pk.eyJ1Ijoic2hpdmFtMTUwMyIsImEiOiJjbGt2c3V2bTQwOGk0M2psdzEzZHZhdjR0In0.m9JIlbT4E6xreGubcL8F0w";
+      const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=${mapboxAccessToken}`;
+
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          const locationName = data.features[0].text;
+          updateSelectedLocation(locationName);
+          hideLocationBox();
+          enableGpsButton();
+        })
+        .catch((error) => {
+          enableGpsButton();
+          alert("Error fetching location details. Please try again later.");
+          console.error(error);
+        });
+    }
+
+    searchInput.addEventListener("input", function () {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      let hasMatchingLocation = false;
+      locationMenu.innerHTML = "";
+
+      localities.forEach((locality) => {
+        if (locality.toLowerCase().includes(searchTerm)) {
+          const listItem = document.createElement("li");
+          listItem.classList.add("location-menu-item");
+          listItem.textContent = locality;
+          listItem.addEventListener("click", function () {
+            selectedLocationText.textContent = listItem.textContent;
+            hideLocationBox();
+          });
+          locationMenu.appendChild(listItem);
+          hasMatchingLocation = true;
+        }
+      });
+
+      locationMenu.style.display = hasMatchingLocation ? "block" : "none";
+    });
+
+    // Add an event listener to the document body for click events
+    document.body.addEventListener("click", function (event) {
+      const locationBoxArea = document.querySelector(".location");
+
+      // Check if the clicked element is inside the location box
+      if (!locationBoxArea.contains(event.target)) {
+        hideLocationBox(); // Hide the location box if clicked outside
+      }
+    });
+
+
+    // Other functions and event listeners remain the same...
+  </script>
+</body>
+</html>
