@@ -1,0 +1,144 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+input[type="text"] {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+button {
+  margin-left: 10px;
+  height: 40px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+/**/
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: none;
+}
+
+/* Add styles for the history list items */
+.history-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  position: relative; /* Added to enable positioning of the delete button */
+}
+
+.history-list li button {
+  background-color: #DC3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: none; /* Hide delete button by default */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.history-list li:hover button {
+  display: block; /* Show delete button on hover */
+}
+/* */
+
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  display: none;
+  overflow-y: auto; /* Enable vertical scrolling */
+max-height:250px;
+}
+
+.service-list li {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.service-list li:hover {
+  background-color: #f0f0f0;
+}
+
+/*Service managmenet Css */
+
+#newServiceInput, h1 {
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+.h1 {
+    text-align: center;
+  }
+.search-bar1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+.button1 {
+    margin-left: 10px;
+    height: 60px;
+    width: 200px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 15px;
+  }
+  .input1[type="text"] {
+    flex: 1;
+    height: 30px;
+    border: 1px solid #0911ff;
+    border-radius: 4px;
+    padding: 0 10px;
+  }
+  /* Service details css*/
+  .service-container {
+    border: 1px solid #f10000;
+    padding: 10px;
+    margin: 10px 0;
+  }
