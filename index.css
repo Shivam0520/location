@@ -1,0 +1,202 @@
+#detectLocationText {
+    left: 25px;
+  width: 139px;
+  
+  position: absolute;
+  top: calc(23.5% - 12.5px);
+  left: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 139px;
+  height: 25px;
+
+    }
+.gps-button{
+    position: absolute;
+  top: 10px;
+  left: 148px;
+  border-radius: 8px;
+  background-color: rgba(255, 61, 27, 0.45);
+  width: 125px;
+  height: 25px;
+}
+.gps-button{
+color: rgb(101, 13, 13);
+}
+.location {
+  top: 95px;
+  left: 68px;
+  height: auto;
+  position: absolute;
+  width: 281px;
+}
+.location-name-text {
+  position: absolute;
+  top: calc(50% - 10.5px);
+  left: 55px;
+  font-weight: 500;
+}
+.location-name {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  background-color: #ffffff;
+  cursor: pointer;
+
+  box-shadow: 0 4px 4px rgba(242, 161, 161, 0.417),
+    2px -4px 4px rgba(193, 73, 73, 0.25) inset,
+    -2px 4px 4px rgba(193, 73, 73, 0.25) inset;
+
+  border: 1px solid rgba(246, 9, 9, 0.1);
+  box-sizing: border-box;
+  width: 281px;
+  height: 67px;
+  overflow: hidden;
+}
+.chevron-down-icon,
+.map-pin-icon {
+  position: absolute;
+  top: calc(50% - 17.5px);
+  left: 235px;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+}
+.map-pin-icon {
+  top: calc(50% - 14.5px);
+  left: 18px;
+  width: 25px;
+  height: 28px;
+}
+.search-icon
+{
+  position: absolute;
+  overflow: hidden;
+  top: calc(68% - 7px);
+  left: 23px;
+  width: 20px;
+  height: 22px;
+}
+.location-box {
+  position: absolute;
+  width: 281px;
+}
+.location-box {
+  top: 80px;
+  left: calc(50% - 140.5px);
+  border-radius: 10px;
+
+  box-shadow: 0 4px 4px rgba(242, 161, 161, 0.417),
+    2px -4px 4px rgba(193, 73, 73, 0.25) inset,
+    -2px 4px 4px rgba(193, 73, 73, 0.25) inset;
+
+
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  height: 98px; /* Default height of the box */
+  font-size: 13px;
+}
+
+.lo
+    /* Styling for the search bar */
+.search-container {
+      display: none;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+.search-input {
+  position: absolute;
+  top: 52px;
+  left: 11px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25),
+    2px -4px 4px rgba(0, 0, 0, 0.25) inset,
+    -2px 4px 4px rgba(0, 0, 0, 0.25) inset;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 259px;
+  height: 34px;
+  text-align:center;
+  overflow: hidden;
+  
+    }
+
+    /* Styling for the custom location selection menu */
+.location-menu {
+      display: none;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 100px;
+      border: 1px solid #ccc;
+      overflow-y: auto;
+  position: absolute;
+  width: 253px;
+  height: auto;
+  top: 0;
+  left: 0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  top: 100px;
+  left: calc(50% - 126.5px);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+.location-menu-item {
+      cursor: pointer;
+      padding: 10px;
+
+      border-radius: 1px;
+      box-shadow: 0 4px 4px rgba(242, 161, 161, 0.417),
+    2px -4px 4px rgba(193, 73, 73, 0.25) inset,
+    -2px 4px 4px rgba(193, 73, 73, 0.25) inset;
+
+
+      transition: background-color 0.3s ease;
+    }
+
+.location-menu-item:hover {
+      background-color:#d35050cd;
+    }
+
+    /* Styling for the selected location display */
+.selected-location {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      cursor: pointer;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+/* Additional styles for the typewriter effect */
+    .typewriter {
+      display: inline-block;
+    }
+
+    /* Custom Scrollbar Styles */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #fffcfc;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #fdc0c0;
+      border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e35858;
+    }
